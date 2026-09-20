@@ -1,158 +1,895 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Arad's Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<title>Arad Attal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+<style>
+  /* A deliberately single-theme page: committed dark, every colour painted explicitly. */
+  :root {
+    color-scheme: dark;
+    --bg:       #05060E;
+    --bg-2:     #080B17;
+    --card:     #0B0F1E;
+    --card-2:   #101528;
+    --line:     #1C2340;
+    --line-2:   #2C365C;
+    --tx:       #EAF0FF;
+    --tx-2:     #97A3C6;
+    --tx-3:     #636E92;
+    --ac:       #6FE4FF;
+    --ac-2:     #A78BFA;
+    --ac-soft:  rgba(111,228,255,.10);
+    --ac-line:  rgba(111,228,255,.32);
+    --glow:     0 0 24px rgba(111,228,255,.28);
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>Arad Attal<br />
-						Portfolio</h1>
-						<p>Exploring Data Analyst Projects: Unveiling Insights with Excel, Tableau, MySQL, and Python </p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+    --sans: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Geist Mono", ui-monospace, Menlo, Consolas, monospace;
+    --pad: clamp(1.125rem, 4vw, 3.5rem);
+  }
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Arad's Projects</a>
-					</header>
+  * { box-sizing: border-box; }
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">Projects</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/arad-attal-7083661b2/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
-							<li><a href="https://github.com/aradat1" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+  body {
+    background: var(--bg);
+    color: var(--tx);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
 
-				<!-- Main -->
-					<div id="main">
+  /* deep space: a drifting starfield, two nebulae, and a whisper of grain */
+  #sky {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; display: block;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background:
+      radial-gradient(62rem 34rem at 78% -8%,  rgba(111,228,255,.13), transparent 64%),
+      radial-gradient(52rem 30rem at 12% 22%,  rgba(167,139,250,.11), transparent 62%),
+      radial-gradient(70rem 40rem at 50% 108%, rgba(111,228,255,.07), transparent 60%);
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; z-index: 2; pointer-events: none;
+    opacity: .28; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+  }
+  nav, .wrap { position: relative; z-index: 3; }
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<span class="date">November 05, 2023</span>
-									<h2><a href="https://github.com/aradat1/PortfolioProjects/blob/main/Data%20Cleaning%20Portfolio%20Project%20Queries.sql">DATA CLEANING<br />
-										IN SQL</a></h2>
-									<p>In this project I took raw housing data and transform
-										it in SQL Server to make it more usable for analysis.</p>
-								</header>
-								<a href="https://github.com/aradat1/PortfolioProjects/blob/main/Data%20Cleaning%20Portfolio%20Project%20Queries.sql" class="image main"><img src="images/housing.jpeg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="https://github.com/aradat1/PortfolioProjects/blob/main/Data%20Cleaning%20Portfolio%20Project%20Queries.sql" class="button large">VIEW PROJECT</a></li>
-								</ul>
-							</article>
+  .wrap { max-width: 78rem; margin: 0 auto; padding: 0 var(--pad); }
+  a { color: inherit; }
+  a:focus-visible { outline: 2px solid var(--ac); outline-offset: 3px; border-radius: 4px; }
+  h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.035em; line-height: 1.04; text-wrap: balance; }
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<span class="date">November 07, 2023</span>
-										<h2><a href="https://github.com/aradat1/PortfolioProjects/blob/main/COVID%20Portfolio%20Project%20-%20Data%20Exploration.sql">COVID 19
-											<br />
-											DATA EXPLORATION</a></h2>
-									</header>
-									<a href="https://github.com/aradat1/PortfolioProjects/blob/main/COVID%20Portfolio%20Project%20-%20Data%20Exploration.sql" class="image fit"><img src="images/covid.jpeg" alt="" /></a>
-									<p>In this exploration of global COVID-19 data, I harnessed the power of SQL to navigate and analyze the pandemic's impact. the project dives deep into the data, providing valuable insights and a comprehensive understanding of the global COVID-19 landscape.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/aradat1/PortfolioProjects/blob/main/COVID%20Portfolio%20Project%20-%20Data%20Exploration.sql" class="button">VIEW PROJECT</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">October  31, 2023</span>
-										<h2><a href="https://public.tableau.com/views/AirBnb-FullProject_16987676340140/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link">TABLEAU DASHBOARDS<br />
-										</a></h2>
-									</header>
-									<a href="https://public.tableau.com/views/AirBnb-FullProject_16987676340140/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link" class="image fit"><img src="images/tableau.jpeg" alt="" /></a>
-									<p>In my Tableau project, I analyzed Airbnb profits in 2016, zooming into zip code areas and bedroom counts. The dashboard distills key insights, unveiling the financial dynamics of Airbnb apartments with precision.</p>
-									<ul class="actions special">
-										<li><a href="https://public.tableau.com/views/AirBnb-FullProject_16987676340140/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link" class="button">VIEW PROJECT</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">November 08, 2023</span>
-										<h2><a href="https://github.com/aradat1/PortfolioProjects/blob/main/Movie%20Portfolio%20Project.ipynb">MOVIE CORRELATION<br />
-											WITH PYTHON</a></h2>
-									</header>
-									<a href="https://github.com/aradat1/PortfolioProjects/blob/main/Movie%20Portfolio%20Project.ipynb" class="image fit"><img src="images/movies.jpeg" alt="" /></a>
-									<p>In this Python project, I dissected movie data to pinpoint the key factors influencing box office success. Uncovering correlations, revealing the essential variables shaping a film's gross revenue.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/aradat1/PortfolioProjects/blob/main/Movie%20Portfolio%20Project.ipynb" class="button">VIEW PROJECT</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">October  28, 2023</span>
-										<h2><a href="https://github.com/aradat1/PortfolioProjects/blob/main/Excel%20Project%20bike%20sales.xlsx">EXCEL DASHBOARD<br />
-										</a></h2>
-									</header>
-									<a href="https://github.com/aradat1/PortfolioProjects/blob/main/Excel%20Project%20bike%20sales.xlsx" class="image fit"><img src="images/excel.jpeg" alt="" /></a>
-									<p>"In my Excel project, I analyzed bicycle sales data using pivot tables, exploring factors like gender, income, and age. The dynamic dashboard created transforms raw data into clear visual insights, offering a concise overview of market trends and consumer preferences."</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/aradat1/PortfolioProjects/blob/main/Excel%20Project%20bike%20sales.xlsx" class="button">VIEW PROJECT</a></li>
-									</ul>
-								</article>
-							</section>
+  .eyebrow {
+    font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--tx-3);
+  }
 
+  /* ── nav ─────────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 30;
+    background: rgba(5,6,14,.72); backdrop-filter: blur(16px) saturate(1.3);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-in {
+    max-width: 78rem; margin: 0 auto; padding: 0.8125rem var(--pad);
+    display: flex; align-items: center; gap: 1.75rem;
+  }
+  .mark {
+    font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.02em;
+    text-decoration: none; margin-right: auto; display: flex; align-items: center; gap: 0.5rem;
+  }
+  .mark i { width: 7px; height: 7px; border-radius: 50%; background: var(--ac); display: block; box-shadow: var(--glow); }
+  .nav-links { display: flex; gap: 1.625rem; font-size: 0.875rem; }
+  .nav-links a { text-decoration: none; color: var(--tx-2); transition: color .15s ease; }
+  .nav-links a:hover { color: var(--tx); }
+  .btn {
+    font-size: 0.875rem; font-weight: 500; text-decoration: none; white-space: nowrap;
+    padding: 0.5rem 1rem; border-radius: 8px; background: var(--ac); color: #041018;
+    box-shadow: var(--glow); transition: filter .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover { filter: brightness(1.1); box-shadow: 0 0 32px rgba(111,228,255,.45); }
+  .btn-line {
+    font-size: 0.875rem; font-weight: 500; text-decoration: none; white-space: nowrap;
+    padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--line-2); color: var(--tx);
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .btn-line:hover { border-color: var(--ac); background: var(--ac-soft); }
+  @media (max-width: 56rem) { .nav-links { display: none; } }
 
-						<section class="split contact">
-							<section class="alt">
-								<h3>Location</h3>
-								<p>Tlv, Israel</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(+972) 053-2736653</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">Arad.attal1@gmail.com</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://www.linkedin.com/in/arad-attal-7083661b2/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
-									<li><a href="https://github.com/aradat1" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+  /* ── hero ────────────────────────────────────────────── */
+  .hero { padding: clamp(3.5rem, 10vw, 7rem) 0 clamp(2.5rem, 6vw, 4rem); }
+  .hero .eyebrow { display: flex; align-items: center; gap: 0.625rem; }
+  .hero .eyebrow b { color: var(--tx); font-weight: 500; letter-spacing: 0.16em; }
+  .hero h1 {
+    font-size: clamp(2.375rem, 6.6vw, 5rem); font-weight: 600;
+    margin-top: 1.5rem; max-width: 22ch;
+  }
+  .hero h1 em { font-style: normal; color: var(--ac); text-shadow: 0 0 40px rgba(111,228,255,.35); }
+  .hero .sub {
+    margin: 1.625rem 0 0; max-width: 46ch; font-size: clamp(1rem, 1.7vw, 1.1875rem);
+    color: var(--tx-2); line-height: 1.6;
+  }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-top: 2.25rem; }
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+  /* ── the quiet capability strip ──────────────────────── */
+  .strip {
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    padding: 1.25rem 0; display: flex; flex-wrap: wrap; gap: 0.75rem 2.25rem; align-items: center;
+  }
+  .strip span {
+    font-family: var(--mono); font-size: 0.75rem; color: var(--tx-3);
+    letter-spacing: 0.02em; white-space: nowrap;
+  }
+  .strip span::before { content: "— "; color: var(--ac); }
 
-			</div>
+  /* ── sections ────────────────────────────────────────── */
+  section { padding: clamp(3.5rem, 9vw, 6.5rem) 0; }
+  .sec-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.25rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .sec-head h2 { font-size: clamp(1.625rem, 3.6vw, 2.5rem); max-width: 18ch; }
+  .sec-head .aside { max-width: 34ch; color: var(--tx-2); font-size: 0.9375rem; }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  /* ── big project cards ───────────────────────────────── */
+  .projects { display: flex; flex-direction: column; gap: clamp(1rem, 2.5vw, 1.75rem); }
+  .proj {
+    background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+    border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  .proj:hover { border-color: var(--ac-line); box-shadow: 0 0 48px -24px rgba(111,228,255,.5); }
+  .shot {
+    background: radial-gradient(60% 80% at 50% 0%, rgba(111,228,255,.05), transparent 70%), rgba(3,4,10,.55);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(1.25rem, 3.5vw, 2.75rem);
+    display: grid; place-items: center;
+  }
+  .shot svg { width: 100%; max-width: 46rem; height: auto; display: block; color: var(--tx-2); }
+  .proj-body {
+    padding: clamp(1.25rem, 3vw, 1.875rem);
+    display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) 11rem; gap: clamp(1.25rem, 3vw, 2.5rem);
+    align-items: start;
+  }
+  .proj-body h3 { font-size: clamp(1.125rem, 2.1vw, 1.5rem); font-weight: 600; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 0.875rem; }
+  .tags span {
+    font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--tx-3); border: 1px solid var(--line); border-radius: 5px; padding: 0.25rem 0.5rem;
+  }
+  .proj-body .desc { margin: 0; color: var(--tx-2); font-size: 0.9375rem; line-height: 1.6; }
+  .meta { display: flex; flex-direction: column; gap: 0.75rem; }
+  .meta div { display: flex; flex-direction: column; gap: 0.1875rem; }
+  .meta dt, .meta .k {
+    font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--tx-3);
+  }
+  .meta .v { font-size: 0.8125rem; color: var(--tx); line-height: 1.4; }
+  .meta .v.hot { color: var(--ac); }
+  @media (max-width: 62rem) { .proj-body { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; } }
 
-	</body>
-</html>
+  /* svg label classes */
+  .fx { font-family: var(--mono); font-size: 8.5px; fill: var(--tx-3); letter-spacing: .06em; }
+  .fl { font-family: var(--sans); font-size: 11.5px; fill: var(--tx); }
+  .fm { font-family: var(--mono); font-size: 9.5px; fill: var(--tx-2); }
+  .fs { font-family: var(--mono); font-size: 8.3px; fill: var(--tx-2); }
+
+  .illus {
+    display: inline-flex; align-items: center; gap: 0.4375rem;
+    font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.05em;
+    color: var(--ac); background: var(--ac-soft); border: 1px solid var(--ac-line);
+    border-radius: 999px; padding: 0.3125rem 0.75rem;
+  }
+
+  /* ── AI band ─────────────────────────────────────────── */
+  .ai {
+    background: linear-gradient(180deg, rgba(167,139,250,.07), rgba(111,228,255,.035));
+    border: 1px solid var(--line);
+    border-radius: 22px; padding: clamp(1.5rem, 4.5vw, 3rem);
+    position: relative; overflow: hidden;
+  }
+  .ai::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(44rem 20rem at 92% -14%, rgba(111,228,255,.16), transparent 62%);
+  }
+  .ai > * { position: relative; z-index: 1; }
+  .ai h2 { font-size: clamp(1.625rem, 3.6vw, 2.5rem); max-width: 20ch; margin-top: 0.75rem; }
+  .ai .lede { margin: 1.125rem 0 0; max-width: 52ch; color: var(--tx-2); font-size: 1rem; }
+  .pipe { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .stage {
+    font-family: var(--mono); font-size: 0.75rem; color: var(--tx-2);
+    background: transparent; border: 1px solid var(--line-2); border-radius: 8px;
+    padding: 0.5rem 0.875rem; cursor: pointer;
+    transition: border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  .stage:hover { color: var(--tx); border-color: var(--ac-line); }
+  .stage[aria-selected="true"] { background: var(--ac); border-color: var(--ac); color: #041018; font-weight: 500; box-shadow: var(--glow); }
+  .stage b { opacity: .5; margin-right: 0.4375rem; font-weight: 400; }
+  .stage-wrap {
+    margin-top: 1.125rem; border: 1px solid var(--line); border-radius: 14px;
+    background: var(--bg-2); padding: clamp(1.125rem, 3vw, 1.75rem); min-height: 12rem;
+  }
+  .panel { display: grid; grid-template-columns: minmax(0, 1fr) 12rem; gap: 1.75rem; align-items: start; }
+  .panel[hidden] { display: none !important; }
+  .panel h3 { font-size: 1.1875rem; font-weight: 600; line-height: 1.25; }
+  .panel p { margin: 0.75rem 0 0; color: var(--tx-2); font-size: 0.9375rem; line-height: 1.6; max-width: 56ch; }
+  .panel .out { border-left: 2px solid var(--ac); padding-left: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .panel .out span { font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tx-3); }
+  .panel .out b { font-family: var(--mono); font-size: 0.8125rem; color: var(--tx); font-weight: 400; line-height: 1.5; }
+  .ai .rule-line {
+    margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--line);
+    font-family: var(--mono); font-size: 0.8125rem; color: var(--tx-2); line-height: 1.7;
+  }
+  .ai .rule-line em { color: var(--ac); font-style: normal; }
+  @media (max-width: 48rem) { .panel { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; } }
+
+  /* ── judgement rows ──────────────────────────────────── */
+  .rows { border-top: 1px solid var(--line); }
+  .row {
+    border-bottom: 1px solid var(--line); padding: clamp(1.25rem, 3vw, 1.875rem) 0;
+    display: grid; grid-template-columns: 8rem minmax(0, 1fr) 13rem; gap: clamp(1rem, 3vw, 2.5rem);
+    align-items: start;
+  }
+  .row .n {
+    font-size: clamp(1.75rem, 3.4vw, 2.5rem); font-weight: 600; letter-spacing: -0.045em;
+    color: var(--ac); line-height: 1; font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 28px rgba(111,228,255,.3);
+  }
+  .row .ask { margin: 0; font-size: 0.9375rem; color: var(--tx); }
+  .row .ask span, .row .got span {
+    display: block; font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--tx-3); margin-bottom: 0.25rem;
+  }
+  .row .got { margin: 0.875rem 0 0; font-size: 0.9375rem; color: var(--tx-2); line-height: 1.6; }
+  .row .got span { color: var(--ac); }
+  .row .cap { font-size: 0.8125rem; color: var(--tx-2); line-height: 1.5; }
+  @media (max-width: 56rem) { .row { grid-template-columns: minmax(0, 1fr); gap: 0.875rem; } }
+
+  /* ── chips + about ───────────────────────────────────── */
+  .chipset { display: flex; flex-direction: column; gap: 1.5rem; }
+  .chiprow { display: flex; flex-wrap: wrap; gap: 0.4375rem; }
+  .chiprow .rowlabel {
+    width: 100%; font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.11em;
+    text-transform: uppercase; color: var(--tx-3); margin-bottom: 0.25rem;
+  }
+  .chip { border: 1px solid var(--line); border-radius: 7px; padding: 0.375rem 0.6875rem; font-size: 0.8125rem; color: var(--tx-2); }
+  .chip.hot { border-color: var(--ac-line); color: var(--ac); background: var(--ac-soft); }
+
+  .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.875rem; }
+  .abox { background: rgba(255,255,255,.025); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem; }
+  .abox h3 { font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.11em; text-transform: uppercase; color: var(--tx-3); font-weight: 400; }
+  .abox .big { display: block; margin-top: 0.75rem; font-size: 1rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; }
+  .abox p { margin: 0.4375rem 0 0; font-size: 0.875rem; line-height: 1.5; color: var(--tx-2); }
+  .abox.edu { grid-column: span 2; }
+  @media (max-width: 52rem) { .abox.edu { grid-column: auto; } }
+  .honours { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  .honours div { display: flex; align-items: baseline; gap: 0.75rem; }
+  .honours .hn { font-size: 1rem; font-weight: 600; color: var(--ac); min-width: 2rem; font-variant-numeric: tabular-nums; }
+  .honours .hl { font-size: 0.8125rem; color: var(--tx-2); line-height: 1.4; }
+
+  /* ── contact ─────────────────────────────────────────── */
+  .contact {
+    border: 1px solid var(--line); border-radius: 22px;
+    background: radial-gradient(80% 120% at 50% 0%, rgba(111,228,255,.08), transparent 62%), rgba(11,15,30,.6);
+    padding: clamp(2rem, 6vw, 4rem); text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 1.25rem;
+  }
+  .contact h2 { font-size: clamp(1.75rem, 4.4vw, 3rem); max-width: 18ch; }
+  .contact p { margin: 0; color: var(--tx-2); max-width: 44ch; font-size: 0.9375rem; }
+  .contact .row-btn { display: flex; flex-wrap: wrap; gap: 0.625rem; justify-content: center; margin-top: 0.5rem; }
+
+  footer {
+    padding: 2rem 0 3rem; border-top: 1px solid var(--line); margin-top: clamp(3rem, 7vw, 5rem);
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between;
+    font-family: var(--mono); font-size: 0.75rem; color: var(--tx-3);
+  }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--ac); }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  .hero > * { animation: rise .55s cubic-bezier(.2,.7,.3,1) both; }
+  .hero > *:nth-child(2) { animation-delay: .06s; }
+  .hero > *:nth-child(3) { animation-delay: .12s; }
+  .hero > *:nth-child(4) { animation-delay: .18s; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<nav>
+  <div class="nav-in">
+    <a class="mark" href="#top"><i></i>Arad Attal</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#ai">AI layer</a>
+      <a href="#judgement">Judgement</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#about">About</a>
+    </div>
+    <a class="btn" href="mailto:Arad.attal1@gmail.com">Get in touch</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <header class="hero">
+    <p class="eyebrow"><b>Arad Attal</b> &middot; Technical Product Manager &middot; Tel Aviv</p>
+    <h1>Products for the parts of a business that <em>already run on something</em>.</h1>
+    <p class="sub">
+      An ERP, a phone system, a spreadsheet everyone trusts. I turn those into products people
+      actually use &mdash; enterprise platforms, AI voice and chat agents, and the integrations
+      between them. I build my own AI agents to do it faster, and I verify against the live system
+      before anyone else has to.
+    </p>
+    <p class="hero-cta">
+      <a class="btn" href="mailto:Arad.attal1@gmail.com">Email me</a>
+      <a class="btn-line" href="https://www.linkedin.com/in/arad-attal-7083661b2/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+      <a class="btn-line" href="#work">See the work</a>
+    </p>
+  </header>
+
+  <div class="strip">
+    <span>Enterprise platforms</span>
+    <span>AI voice agents</span>
+    <span>Conversational bots</span>
+    <span>Telephony &amp; CTI</span>
+    <span>AI agent tooling</span>
+    <span>Reporting &amp; adoption</span>
+  </div>
+
+  <section id="work">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Selected work</p>
+        <h2 style="margin-top:.75rem">What I've built</h2>
+      </div>
+      <p class="aside">
+        Every visual below is drawn for this page rather than screenshotted &mdash; the structure of
+        each system, with no customer, order or pricing data in any of them.
+        <br><br><span class="illus">Illustrative &mdash; no real data</span>
+      </p>
+    </div>
+
+    <div class="projects">
+
+      <article class="proj">
+        <div class="shot">
+          <svg viewBox="0 0 420 262" role="img" aria-label="The CRM customer card: a navigation rail, a record header with status chips, tabbed sections and a table of linked records">
+            <rect x="1" y="1" width="418" height="260" rx="12" fill="none" stroke="currentColor" stroke-opacity=".35"/>
+            <path d="M1 28h418" stroke="currentColor" stroke-opacity=".25"/>
+            <circle cx="16" cy="14.5" r="3" fill="currentColor" fill-opacity=".3"/>
+            <circle cx="27" cy="14.5" r="3" fill="currentColor" fill-opacity=".3"/>
+            <circle cx="38" cy="14.5" r="3" fill="currentColor" fill-opacity=".3"/>
+            <path d="M92 28v233" stroke="currentColor" stroke-opacity=".25"/>
+            <rect x="10" y="42" width="72" height="17" rx="5" fill="var(--ac)" fill-opacity=".16"/>
+            <text class="fs" x="18" y="54" fill="var(--ac)">Customers</text>
+            <text class="fs" x="18" y="80">Service calls</text>
+            <text class="fs" x="18" y="101">Orders</text>
+            <text class="fs" x="18" y="122">Warehouse</text>
+            <text class="fs" x="18" y="143">Delivery notes</text>
+            <text class="fs" x="18" y="164">Suppliers</text>
+            <circle cx="118" cy="54" r="13" fill="currentColor" fill-opacity=".16"/>
+            <rect x="140" y="46" width="94" height="8" rx="4" fill="currentColor" fill-opacity=".5"/>
+            <rect x="140" y="60" width="56" height="6" rx="3" fill="currentColor" fill-opacity=".25"/>
+            <rect x="298" y="46" width="50" height="15" rx="7" fill="var(--ac)" fill-opacity=".18"/>
+            <text class="fx" x="307" y="56" fill="var(--ac)">ACTIVE</text>
+            <rect x="354" y="46" width="52" height="15" rx="7" fill="currentColor" fill-opacity=".12"/>
+            <text class="fx" x="362" y="56">CONTRACT</text>
+            <path d="M104 88h304" stroke="currentColor" stroke-opacity=".2"/>
+            <text class="fm" x="106" y="83" fill="var(--ac)">Overview</text>
+            <path d="M104 87h50" stroke="var(--ac)" stroke-width="2"/>
+            <text class="fm" x="168" y="83">Service calls</text>
+            <text class="fm" x="252" y="83">Equipment</text>
+            <text class="fm" x="322" y="83">Invoices</text>
+            <text class="fm" x="378" y="83">Files</text>
+            <g fill="currentColor" fill-opacity=".32">
+              <rect x="106" y="104" width="44" height="6" rx="3"/><rect x="178" y="104" width="68" height="6" rx="3"/>
+              <rect x="272" y="104" width="38" height="6" rx="3"/><rect x="340" y="104" width="54" height="6" rx="3"/>
+            </g>
+            <g stroke="currentColor" stroke-opacity=".14">
+              <path d="M104 120h304M104 152h304M104 184h304M104 216h304M104 248h304"/>
+            </g>
+            <g fill="currentColor" fill-opacity=".22">
+              <rect x="106" y="131" width="52" height="7" rx="3.5"/><rect x="178" y="131" width="86" height="7" rx="3.5"/><rect x="272" y="131" width="30" height="7" rx="3.5"/>
+              <rect x="106" y="163" width="40" height="7" rx="3.5"/><rect x="178" y="163" width="100" height="7" rx="3.5"/><rect x="272" y="163" width="36" height="7" rx="3.5"/>
+              <rect x="106" y="195" width="56" height="7" rx="3.5"/><rect x="178" y="195" width="74" height="7" rx="3.5"/><rect x="272" y="195" width="28" height="7" rx="3.5"/>
+              <rect x="106" y="227" width="46" height="7" rx="3.5"/><rect x="178" y="227" width="92" height="7" rx="3.5"/><rect x="272" y="227" width="34" height="7" rx="3.5"/>
+            </g>
+            <rect x="342" y="127" width="56" height="15" rx="7" fill="var(--ac)" fill-opacity=".16"/><text class="fx" x="352" y="137" fill="var(--ac)">OPEN</text>
+            <rect x="342" y="159" width="56" height="15" rx="7" fill="currentColor" fill-opacity=".12"/><text class="fx" x="352" y="169">CLOSED</text>
+            <rect x="342" y="191" width="56" height="15" rx="7" fill="currentColor" fill-opacity=".2"/><text class="fx" x="352" y="201">WAITING</text>
+            <rect x="342" y="223" width="56" height="15" rx="7" fill="currentColor" fill-opacity=".12"/><text class="fx" x="352" y="233">CLOSED</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div>
+            <h3>A CRM built on the ERP, not beside it</h3>
+            <div class="tags"><span>Discovery</span><span>Data model</span><span>Delivery</span><span>Release</span></div>
+          </div>
+          <p class="desc">
+            Customer operations ran on an external low-code system holding a duplicate of the truth.
+            We replaced it with a native application on the ERP itself. One record carries every
+            linked object behind it &mdash; service calls, equipment, invoices, contracts &mdash;
+            and status lives in the row rather than buried in a field.
+          </p>
+          <div class="meta">
+            <div><span class="k">Status</span><span class="v hot">Live in production</span></div>
+            <div><span class="k">Scale</span><span class="v">2 ERP entities<br>~4,000 accounts</span></div>
+            <div><span class="k">Replaced</span><span class="v">3 paid systems</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="shot">
+          <svg viewBox="0 0 420 250" role="img" aria-label="Architecture: the CRM talks to a service layer, which sends documents and master data to the ERP and lifecycle state to a side database, the two reconciled against the ERP as source of truth">
+            <defs>
+              <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+              </marker>
+              <marker id="aho" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 z" fill="var(--ac)"/>
+              </marker>
+            </defs>
+            <rect x="8" y="98" width="94" height="56" rx="10" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".35"/>
+            <text class="fl" x="55" y="122" text-anchor="middle">CRM</text>
+            <text class="fx" x="55" y="138" text-anchor="middle">WHAT PEOPLE USE</text>
+
+            <rect x="150" y="98" width="100" height="56" rx="10" fill="var(--ac)" fill-opacity=".1" stroke="var(--ac)" stroke-opacity=".5"/>
+            <text class="fl" x="200" y="122" text-anchor="middle" fill="var(--ac)">Service layer</text>
+            <text class="fx" x="200" y="138" text-anchor="middle" fill="var(--ac)">RULES + ROUTING</text>
+
+            <rect x="298" y="28" width="114" height="54" rx="10" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".35"/>
+            <text class="fl" x="355" y="51" text-anchor="middle">ERP</text>
+            <text class="fx" x="355" y="67" text-anchor="middle">SOURCE OF TRUTH</text>
+
+            <rect x="298" y="170" width="114" height="54" rx="10" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".35"/>
+            <text class="fl" x="355" y="193" text-anchor="middle">Side database</text>
+            <text class="fx" x="355" y="209" text-anchor="middle">LIFECYCLE STATE</text>
+
+            <path d="M104 126h42" stroke="currentColor" stroke-opacity=".6" marker-end="url(#ah)"/>
+            <path d="M252 116 C276 116 274 55 295 55" fill="none" stroke="var(--ac)" stroke-opacity=".8" marker-end="url(#aho)"/>
+            <path d="M252 136 C276 136 274 197 295 197" fill="none" stroke="currentColor" stroke-opacity=".6" marker-end="url(#ah)"/>
+            <text class="fm" x="258" y="88">documents, master data</text>
+            <text class="fm" x="258" y="168">status, drafts, queues</text>
+            <path d="M355 86 L355 166" stroke="currentColor" stroke-opacity=".3" stroke-dasharray="4 4"/>
+            <text class="fx" x="362" y="130">RECONCILED</text>
+            <text class="fx" x="8" y="240">EACH FACT HAS EXACTLY ONE HOME &#8212; THERE IS NO SECOND COPY TO DRIFT</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div>
+            <h3>Where each fact actually lives</h3>
+            <div class="tags"><span>Architecture</span><span>ERP integration</span><span>Data modeling</span></div>
+          </div>
+          <p class="desc">
+            The hybrid the CRM is built on, and the decision the whole thing rests on: financial
+            documents stay in the ERP, and only lifecycle state lives beside it. There is never a
+            second copy of the truth to go stale &mdash; and the reconciliation between them is a
+            release gate, not a one-off check.
+          </p>
+          <div class="meta">
+            <div><span class="k">Owned</span><span class="v">Integration contract</span></div>
+            <div><span class="k">Rule</span><span class="v hot">One fact, one home</span></div>
+            <div><span class="k">Release</span><span class="v">Backend first,<br>interface second</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="shot">
+          <svg viewBox="0 0 420 214" role="img" aria-label="Voice agent call path: an incoming call passes the IVR to an AI agent, which either handles the call or transfers it to a person by SIP">
+            <defs>
+              <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+              </marker>
+            </defs>
+            <circle cx="34" cy="94" r="21" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".35"/>
+            <path d="M26 88c4 8 8 12 16 14l3-5 7 3-2 7c-13 0-25-12-27-25l7-2 3 8z" fill="currentColor" fill-opacity=".5"/>
+            <text class="fx" x="34" y="132" text-anchor="middle">CALL IN</text>
+
+            <rect x="76" y="72" width="74" height="44" rx="9" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".35"/>
+            <text class="fl" x="113" y="99" text-anchor="middle">IVR</text>
+
+            <rect x="176" y="64" width="94" height="60" rx="10" fill="var(--ac)" fill-opacity=".1" stroke="var(--ac)" stroke-opacity=".5"/>
+            <text class="fl" x="223" y="88" text-anchor="middle" fill="var(--ac)">AI agent</text>
+            <path d="M193 106 l4-9 4 14 4-18 4 22 4-16 4 10 4-6 4 3" fill="none" stroke="var(--ac)" stroke-opacity=".85" stroke-width="1.6" stroke-linejoin="round"/>
+
+            <rect x="302" y="24" width="108" height="44" rx="9" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".35"/>
+            <text class="fl" x="356" y="51" text-anchor="middle">Handled</text>
+
+            <rect x="302" y="126" width="108" height="46" rx="9" fill="var(--ac)" fill-opacity=".14" stroke="var(--ac)" stroke-opacity=".5"/>
+            <text class="fl" x="356" y="147" text-anchor="middle" fill="var(--ac)">A person</text>
+            <text class="fx" x="356" y="162" text-anchor="middle" fill="var(--ac)">WITH THE CONTEXT</text>
+
+            <path d="M56 94h16" stroke="currentColor" stroke-opacity=".6" marker-end="url(#ah2)"/>
+            <path d="M152 94h20" stroke="currentColor" stroke-opacity=".6" marker-end="url(#ah2)"/>
+            <path d="M272 84 C288 84 288 46 299 46" fill="none" stroke="currentColor" stroke-opacity=".6" marker-end="url(#ah2)"/>
+            <path d="M272 106 C288 106 288 148 299 148" fill="none" stroke="currentColor" stroke-opacity=".6" marker-end="url(#ah2)"/>
+            <text class="fm" x="148" y="62">routes by number</text>
+            <text class="fm" x="280" y="74">resolved</text>
+            <text class="fm" x="256" y="196">can&#8217;t resolve, or the caller asks &#8212; SIP transfer</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div>
+            <h3>A voice agent that survives a real phone call</h3>
+            <div class="tags"><span>Product strategy</span><span>PRD</span><span>Telephony</span><span>Vendor governance</span></div>
+          </div>
+          <p class="desc">
+            Voice automation fails on the boring parts: the handover to a human, the branch that
+            owns the customer, the API that answers in time or not at all. I led validation,
+            strategy, MVP scope and the full PRD, then the telephony path and the integration
+            contracts the agent depends on.
+          </p>
+          <div class="meta">
+            <div><span class="k">Artifacts</span><span class="v">14-stage PRD<br>3 integration specs</span></div>
+            <div><span class="k">Governance</span><span class="v hot">RACI &middot; KPIs &middot; IP</span></div>
+            <div><span class="k">Built by</span><span class="v">External supplier,<br>specified by me</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="shot">
+          <svg viewBox="0 0 420 214" role="img" aria-label="A WhatsApp decision-tree bot beside its specification: a greeting, tappable options, and the written answer each option returns">
+            <rect x="10" y="8" width="170" height="198" rx="14" fill="currentColor" fill-opacity=".05" stroke="currentColor" stroke-opacity=".3"/>
+            <rect x="58" y="15" width="74" height="7" rx="3.5" fill="currentColor" fill-opacity=".2"/>
+            <rect x="22" y="36" width="120" height="30" rx="9" fill="currentColor" fill-opacity=".1"/>
+            <rect x="32" y="46" width="70" height="5" rx="2.5" fill="currentColor" fill-opacity=".35"/>
+            <rect x="32" y="55" width="94" height="5" rx="2.5" fill="currentColor" fill-opacity=".22"/>
+            <rect x="22" y="76" width="148" height="19" rx="9" fill="var(--ac)" fill-opacity=".15" stroke="var(--ac)" stroke-opacity=".45"/>
+            <text class="fm" x="32" y="89" fill="var(--ac)">Opening hours</text>
+            <rect x="22" y="101" width="148" height="19" rx="9" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".25"/>
+            <text class="fm" x="32" y="114">Book a visit</text>
+            <rect x="22" y="126" width="148" height="19" rx="9" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".25"/>
+            <text class="fm" x="32" y="139">Talk to a person</text>
+            <rect x="48" y="155" width="122" height="30" rx="9" fill="var(--ac)" fill-opacity=".1"/>
+            <rect x="58" y="165" width="80" height="5" rx="2.5" fill="var(--ac)" fill-opacity=".5"/>
+            <rect x="58" y="174" width="58" height="5" rx="2.5" fill="var(--ac)" fill-opacity=".3"/>
+
+            <path d="M186 86 H206" stroke="var(--ac)" stroke-opacity=".6" stroke-dasharray="3 3"/>
+            <circle cx="214" cy="86" r="4.5" fill="var(--ac)" fill-opacity=".8"/>
+            <path d="M222 86 H242" stroke="currentColor" stroke-opacity=".3" stroke-dasharray="3 3"/>
+
+            <text class="fx" x="248" y="42">WRITTEN AND APPROVED FIRST</text>
+            <g stroke="currentColor" stroke-opacity=".35" fill="none">
+              <rect x="248" y="54" width="62" height="24" rx="6"/>
+              <rect x="344" y="54" width="66" height="24" rx="6"/>
+              <rect x="344" y="90" width="66" height="24" rx="6"/>
+              <rect x="344" y="126" width="66" height="24" rx="6"/>
+            </g>
+            <text class="fm" x="258" y="70">Menu</text>
+            <text class="fm" x="354" y="70">Answer</text>
+            <text class="fm" x="354" y="106">Answer</text>
+            <text class="fm" x="354" y="142">Hand off</text>
+            <g stroke="currentColor" stroke-opacity=".4" fill="none">
+              <path d="M310 66 H340"/>
+              <path d="M279 78 V102 H340"/>
+              <path d="M279 78 V138 H340"/>
+            </g>
+            <text class="fx" x="248" y="178">NO GENERATION AT RUNTIME:</text>
+            <text class="fx" x="248" y="192">EVERY LEAF IS A WRITTEN ANSWER</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div>
+            <h3>Bots that never improvise</h3>
+            <div class="tags"><span>Spec design</span><span>Tooling</span><span>Client delivery</span></div>
+          </div>
+          <p class="desc">
+            Button-driven WhatsApp bots rather than generative ones: every branch and every answer
+            is written and signed off in the specification first. I built the tooling that turns an
+            approved spec straight into the platform's import format, so nobody rebuilds the tree
+            by hand.
+          </p>
+          <div class="meta">
+            <div><span class="k">Source</span><span class="v">The business's<br>own content</span></div>
+            <div><span class="k">Onboarding</span><span class="v hot">7-stage playbook</span></div>
+            <div><span class="k">Output</span><span class="v">Spec &rarr; import file</span></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="ai">
+    <div class="ai">
+      <p class="eyebrow">The AI layer</p>
+      <h2>I don't just use agents. I build the ones I work with.</h2>
+      <p class="lede">
+        Sixteen custom agent skills, one knowledge base they all read from, and a single rule: the
+        agent verifies against the system, never against the claim. Pick a stage.
+      </p>
+
+      <div class="pipe" role="tablist" aria-label="Agent workflows">
+        <button class="stage" role="tab" aria-selected="true"  aria-controls="s0" id="t0"><b>01</b>Spec review</button>
+        <button class="stage" role="tab" aria-selected="false" aria-controls="s1" id="t1"><b>02</b>Fix verification</button>
+        <button class="stage" role="tab" aria-selected="false" aria-controls="s2" id="t2"><b>03</b>Process QA</button>
+        <button class="stage" role="tab" aria-selected="false" aria-controls="s3" id="t3"><b>04</b>Release digest</button>
+      </div>
+
+      <div class="stage-wrap">
+        <div class="panel" role="tabpanel" id="s0" aria-labelledby="t0">
+          <div>
+            <h3>Review a screen against its whole data path</h3>
+            <p>
+              The agent walks one feature from the interface down through the API layers to the ERP
+              and the database, then files what it finds &mdash; each finding classified by layer,
+              severity and owner, so frontend and backend items route to different people
+              automatically. It reads the shared knowledge base first, so it never re-derives a
+              decision that was already made.
+            </p>
+          </div>
+          <div class="out">
+            <span>Output</span><b>Findings, classified<br>by layer &amp; owner</b>
+            <span>Reads first</span><b>The knowledge base</b>
+          </div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="s1" aria-labelledby="t1" hidden>
+          <div>
+            <h3>Verify the fix, not the claim</h3>
+            <p>
+              When an item is marked fixed, this one audits it against the code as it stands today
+              &mdash; and reproduces anything that depends on library or runtime behaviour rather
+              than trusting the description. Genuinely fixed closes with the evidence attached;
+              partially fixed goes back with the file, the line, and what is still missing.
+            </p>
+          </div>
+          <div class="out">
+            <span>Rule</span><b>Evidence or it<br>isn't closed</b>
+            <span>Never</span><b>Edits the code</b>
+          </div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="s2" aria-labelledby="t2" hidden>
+          <div>
+            <h3>Drive the real app, then check the backend</h3>
+            <p>
+              It signs in, enters data, saves, changes statuses &mdash; and then verifies each write
+              against the actual backend and ERP rather than against the screen. That is the whole
+              point: it catches the failure no interface test sees, where the form looked fine and
+              nothing persisted. It cleans up the records it created.
+            </p>
+          </div>
+          <div class="out">
+            <span>Catches</span><b>"Looked fine,<br>never persisted"</b>
+            <span>Verifies at</span><b>The write path</b>
+          </div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="s3" aria-labelledby="t3" hidden>
+          <div>
+            <h3>Say what actually shipped, twice</h3>
+            <p>
+              It measures a period from the repositories and the task board, then checks what is
+              genuinely live in production before a word goes out &mdash; so the employee version
+              never announces a feature nobody can find. Two outputs from one pass: a delivery and
+              KPI view for management, and a role-organised newsletter for the people who use it.
+            </p>
+          </div>
+          <div class="out">
+            <span>Gate</span><b>Live in production,<br>verified</b>
+            <span>Audiences</span><b>Management + users</b>
+          </div>
+        </div>
+      </div>
+
+      <p class="rule-line">
+        Also in the stack: <em>MCP servers</em> for the systems I work against &middot;
+        <em>hooks</em> that keep sessions from colliding on shared infrastructure &middot;
+        a <em>token-injection harness</em> so QA runs as a real signed-in user &middot;
+        and multi-agent <em>workflows</em> that fan a review out and verify each finding in parallel.
+      </p>
+    </div>
+  </section>
+
+  <section id="judgement">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Judgement</p>
+        <h2 style="margin-top:.75rem">Three times the data changed the plan</h2>
+      </div>
+      <p class="aside">
+        Each arrived as a confident request. Reading the live system first is what stopped us
+        building the wrong thing.
+      </p>
+    </div>
+
+    <div class="rows">
+      <div class="row">
+        <span class="n">&lt;4%</span>
+        <div>
+          <p class="ask"><span>They asked for</span>Reporting on the service indicators on the customer card.</p>
+          <p class="got"><span>The data showed</span>They were only written when someone opened that tab &mdash; recording who had browsed, not what the customer owned. I re-specified how they get written before anything was built on top of them.</p>
+        </div>
+        <p class="cap">of accounts had the data the report needed</p>
+      </div>
+
+      <div class="row">
+        <span class="n">2&rarr;1</span>
+        <div>
+          <p class="ask"><span>They asked for</span>Two fixes: descriptions come out wrong in supplier pricing, and wrong again on new parts.</p>
+          <p class="got"><span>The data showed</span>One defect, not two. The field was derived and read-only, and identical on every price row but one. Two scoped features became a single fix.</p>
+        </div>
+        <p class="cap">features, after finding the shared root cause</p>
+      </div>
+
+      <div class="row">
+        <span class="n">0.000%</span>
+        <div>
+          <p class="ask"><span>They asked for</span>Ship the new warehouse inventory module &mdash; it looks right in testing.</p>
+          <p class="got"><span>The data showed</span>"Looks right" isn't a result. Every line the module produced was reconciled against the ERP, and that reconciliation became the release gate for the modules after it.</p>
+        </div>
+        <p class="cap">variance against the ERP at release</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="toolkit">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Toolkit</p>
+        <h2 style="margin-top:.75rem">I write the spec and I read the database</h2>
+      </div>
+      <p class="aside">The second one is why the first one holds up.</p>
+    </div>
+
+    <div class="chipset">
+      <div class="chiprow">
+        <span class="rowlabel">Product</span>
+        <span class="chip">Discovery</span><span class="chip">Requirements definition</span>
+        <span class="chip">Process mapping</span><span class="chip">Roadmapping</span>
+        <span class="chip">Stakeholder management</span><span class="chip">Release management</span>
+        <span class="chip">Adoption &amp; enablement</span>
+      </div>
+      <div class="chiprow">
+        <span class="rowlabel">AI &amp; automation</span>
+        <span class="chip hot">Claude Code</span><span class="chip hot">Custom agent skills</span>
+        <span class="chip">Conversational AI</span><span class="chip">Voice AI</span>
+        <span class="chip">Prompt engineering</span><span class="chip">n8n</span>
+        <span class="chip">API integration design</span>
+      </div>
+      <div class="chiprow">
+        <span class="rowlabel">Data</span>
+        <span class="chip">SQL against production</span><span class="chip">Python (Pandas)</span>
+        <span class="chip">ERP data modeling (OData)</span><span class="chip">Power BI</span>
+        <span class="chip">Tableau</span><span class="chip">KPI definition</span><span class="chip">A/B testing</span>
+      </div>
+      <div class="chiprow">
+        <span class="rowlabel">Systems</span>
+        <span class="chip">Priority ERP</span><span class="chip">MySQL</span><span class="chip">AWS</span>
+        <span class="chip">Salesforce</span><span class="chip">Monday.com</span><span class="chip">Jira</span>
+        <span class="chip">Figma</span><span class="chip">Miro</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2 style="margin-top:.75rem">Before and alongside</h2>
+      </div>
+    </div>
+
+    <div class="about">
+      <div class="abox edu">
+        <h3>Education &amp; honours</h3>
+        <span class="big">B.Sc. Information Systems</span>
+        <p>The Academic College of Tel Aviv&ndash;Yafo, 2020&ndash;2023.</p>
+        <div class="honours">
+          <div><span class="hn">90</span><span class="hl">Final GPA</span></div>
+          <div><span class="hn">2&times;</span><span class="hl">Dean's List &mdash; second and third year</span></div>
+          <div><span class="hn">1&times;</span><span class="hl">Vice President's Honor List &mdash; first year</span></div>
+        </div>
+      </div>
+      <div class="abox">
+        <h3>Service</h3>
+        <span class="big">Major (Res.), Operations Officer</span>
+        <p>IDF General Staff. Mission management and decisions under pressure with incomplete information &mdash; closer to product work than it sounds.</p>
+      </div>
+      <div class="abox">
+        <h3>Languages</h3>
+        <span class="big">Hebrew &middot; English &middot; French</span>
+        <p>Hebrew native, English fluent and the working language of everything here, French basic.</p>
+      </div>
+      <div class="abox">
+        <h3>Currently</h3>
+        <span class="big">iPracticom, since 2024</span>
+        <p>Product Manager for AI, automation and business systems. Tel Aviv.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="contact">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Building something that has to survive a real system?</h2>
+      <p>That's the work I'm good at. Email is the fastest way to reach me.</p>
+      <span class="row-btn">
+        <a class="btn" href="mailto:Arad.attal1@gmail.com">Arad.attal1@gmail.com</a>
+        <a class="btn-line" href="https://www.linkedin.com/in/arad-attal-7083661b2/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+      </span>
+    </div>
+  </section>
+
+  <footer>
+    <span>Arad Attal &mdash; Technical Product Manager, Tel Aviv</span>
+    <span>
+      <a href="https://www.linkedin.com/in/arad-attal-7083661b2/" target="_blank" rel="noopener">LinkedIn</a> &middot;
+      <a href="mailto:Arad.attal1@gmail.com">Email</a>
+    </span>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.stage'));
+    var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+    function show(i) {
+      tabs.forEach(function (t, n) { t.setAttribute('aria-selected', n === i ? 'true' : 'false'); });
+      panels.forEach(function (p, n) { p.hidden = n !== i; });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { show(i); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        var n = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+        tabs[n].focus(); show(n);
+      });
+    });
+  })();
+</script>
+
+<script>
+  (function () {
+    var c = document.getElementById('sky'), x = c.getContext('2d');
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var stars = [], w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function seed() {
+      w = c.clientWidth; h = c.clientHeight;
+      c.width = w * dpr; c.height = h * dpr; x.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.round(Math.min(520, (w * h) / 2600));
+      stars = [];
+      for (var i = 0; i < n; i++) {
+        stars.push({
+          x: Math.random() * w, y: Math.random() * h,
+          r: Math.random() * 1.25 + 0.3,
+          a: Math.random() * 0.6 + 0.3,
+          t: Math.random() * Math.PI * 2,
+          s: Math.random() * 0.14 + 0.02,
+          hue: Math.random() < 0.14 ? '167,139,250' : '190,225,255'
+        });
+      }
+    }
+
+    function frame(now) {
+      x.clearRect(0, 0, w, h);
+      for (var i = 0; i < stars.length; i++) {
+        var p = stars[i];
+        var tw = still ? p.a : p.a * (0.68 + 0.32 * Math.sin(p.t + now / 1400));
+        x.beginPath();
+        x.arc(p.x, p.y, p.r, 0, 6.2832);
+        x.fillStyle = 'rgba(' + p.hue + ',' + tw.toFixed(3) + ')';
+        x.fill();
+        if (!still) {
+          p.y -= p.s;
+          if (p.y < -2) { p.y = h + 2; p.x = Math.random() * w; }
+        }
+      }
+      if (!still) requestAnimationFrame(frame);
+    }
+
+    var t;
+    window.addEventListener('resize', function () {
+      clearTimeout(t); t = setTimeout(function () { seed(); if (still) frame(0); }, 160);
+    });
+    seed();
+    still ? frame(0) : requestAnimationFrame(frame);
+  })();
+</script>
